@@ -1622,6 +1622,279 @@ section,
 }
 
 /*--------------------------------------------------------------
+# Modern Footer
+--------------------------------------------------------------*/
+.modern-footer {
+  position: relative;
+  background: linear-gradient(135deg, rgba(13, 27, 62, 0.95), rgba(27, 39, 78, 0.95));
+  color: #ffffff;
+  padding: 40px 0 20px;
+  margin-top: 60px;
+  overflow: hidden;
+}
+
+.footer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.footer-brand .brand-name {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #0078ff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-brand .brand-tagline {
+  color: #b3c6e7;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.footer-brand .contact-info {
+  color: #d1dce5;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-brand .contact-info i {
+  color: var(--accent-color);
+  margin-right: 8px;
+}
+
+.footer-title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(45deg, #0078ff, #00d4ff);
+  border-radius: 2px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-link {
+  color: #d1dce5;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 5px 0;
+}
+
+.footer-link:hover {
+  color: #0078ff;
+  transform: translateX(5px);
+}
+
+.social-links {
+  gap: 15px;
+  margin-bottom: 1rem;
+}
+
+/* Ensure Bootstrap Icons are visible */
+.social-link i::before {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Fallback for missing icons */
+.social-link[title="Twitter"]:not(:has(i))::after,
+.social-link[title="Facebook"]:not(:has(i))::after,
+.social-link[title="Instagram"]:not(:has(i))::after,
+.social-link[title="LinkedIn"]:not(:has(i))::after,
+.social-link[title="GitHub"]:not(:has(i))::after {
+  content: attr(title);
+  font-size: 10px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: linear-gradient(45deg, #0078ff, #00d4ff);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.social-link:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 120, 255, 0.3);
+  border-color: rgba(0, 120, 255, 0.5);
+  color: #ffffff;
+}
+
+.social-link i {
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .tech-stack {
+    justify-content: flex-end;
+  }
+}
+
+.tech-badge {
+  background: rgba(0, 120, 255, 0.2);
+  border: 1px solid rgba(0, 120, 255, 0.3);
+  color: #0078ff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+  background: rgba(0, 120, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 120, 255, 0.2);
+}
+
+.footer-bottom {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+  color: #b3c6e7;
+  font-size: 0.9rem;
+}
+
+.copyright strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.credits {
+  color: #b3c6e7;
+  font-size: 0.9rem;
+}
+
+.credits .text-danger {
+  color: #ff6b6b !important;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.designer-link {
+  color: #0078ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.designer-link:hover {
+  color: #00d4ff;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Footer Responsive Design */
+@media (max-width: 768px) {
+  .modern-footer {
+    padding: 30px 0 15px;
+    margin-top: 40px;
+  }
+  
+  .footer-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-links {
+    align-items: center;
+  }
+  
+  .footer-link:hover {
+    transform: translateX(0);
+  }
+  
+  .social-links {
+    justify-content: center !important;
+  }
+  
+  .tech-stack {
+    justify-content: center !important;
+  }
+}
+
+/*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {

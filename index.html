@@ -45,9 +45,12 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">Bino Johnson</h1>
-      </a>
+      <div class="d-flex align-items-center">
+        <i class="mobile-nav-toggle d-xl-none bi bi-list me-3"></i>
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Bino Johnson</h1>
+        </a>
+      </div>
 
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -57,7 +60,6 @@
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
     </div>
@@ -73,6 +75,119 @@
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(102, 126, 234, 0.1);
         transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .navmenu {
+        z-index: 1001;
+      }
+
+      .mobile-nav-toggle {
+        z-index: 1002;
+        color: #667eea !important;
+        font-size: 1.5rem !important;
+        cursor: pointer;
+      }
+
+      /* Mobile navigation complete override */
+      @media (max-width: 1199px) {
+        .navmenu {
+          position: fixed !important;
+          top: 80px !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: calc(100vh - 80px) !important;
+          background: rgba(255, 255, 255, 0.98) !important;
+          backdrop-filter: blur(20px) !important;
+          z-index: 99999 !important;
+          transform: translateX(-100%) !important;
+          transition: transform 0.3s ease !important;
+          padding: 20px !important;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .navmenu.mobile-nav-active {
+          transform: translateX(0) !important;
+          z-index: 99999 !important;
+        }
+        
+        .navmenu ul {
+          flex-direction: column !important;
+          list-style: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          z-index: 99999 !important;
+        }
+        
+        .navmenu li {
+          margin: 10px 0 !important;
+          z-index: 99999 !important;
+        }
+
+        .navmenu a {
+          display: block !important;
+          padding: 15px 20px !important;
+          font-size: 1.1rem !important;
+          color: #333 !important;
+          text-decoration: none !important;
+          border-radius: 8px !important;
+          transition: background 0.3s ease !important;
+          z-index: 99999 !important;
+          position: relative !important;
+        }
+
+        .navmenu a:hover,
+        .navmenu a.active {
+          background: rgba(102, 126, 234, 0.1) !important;
+          color: #667eea !important;
+        }
+      }
+
+      /* Mobile navigation z-index fixes */
+      @media (max-width: 1199px) {
+        .navmenu {
+          position: fixed !important;
+          z-index: 9999 !important;
+          background: white !important;
+        }
+        
+        .navmenu ul {
+          z-index: 9999 !important;
+          background: white !important;
+          position: relative !important;
+        }
+        
+        .navmenu.mobile-nav-active {
+          z-index: 9999 !important;
+        }
+
+        .navmenu li {
+          z-index: 9999 !important;
+        }
+
+        .navmenu a {
+          z-index: 9999 !important;
+          position: relative !important;
+        }
+      }
+
+      /* Target all possible mobile nav states */
+      .navmenu.navmenu-mobile,
+      .navmenu.show,
+      .navmenu.active,
+      .navmenu.open {
+        z-index: 9999 !important;
+        background: white !important;
+      }
+
+      /* Ensure header is above floating tech on all devices */
+      #header {
+        position: relative;
+        z-index: 1000 !important;
+      }
+
+      .header {
+        z-index: 1000 !important;
       }
 
       #header.scrolled {
@@ -390,7 +505,9 @@
       /* Mobile adjustments - Clean professional design */
       @media (max-width: 768px) {
         .floating-tech {
-          display: none !important;
+          z-index: 1 !important;
+          opacity: 0.4;
+          pointer-events: none;
         }
 
         .mobile-tech-showcase {
@@ -647,7 +764,7 @@
         width: 60px;
         height: 60px;
         bottom: 40px;
-        right: 40px;
+        right: 55px;
         background-color: #25d366;
         color: white;
         border-radius: 50px;
@@ -935,10 +1052,10 @@
         }
 
         .whatsapp-float {
-          width: 50px;
-          height: 50px;
-          bottom: 20px;
-          right: 20px;
+          width: 45px;
+          height: 45px;
+          bottom: 68px;
+          right: 16px;
           font-size: 24px;
         }
 
@@ -1500,27 +1617,71 @@
 
   </main>
 
-  <footer id="footer" class="footer accent-background">
+  <footer id="footer" class="footer modern-footer">
+    <div class="footer-overlay"></div>
+    <div class="container position-relative">
+      <div class="row g-4 align-items-center">
+        
+        <!-- Footer Brand -->
+        <div class="col-lg-4 col-md-6 text-center text-md-start">
+          <div class="footer-brand">
+            <h4 class="brand-name mb-2">Bino Johnson</h4>
+            <p class="brand-tagline mb-3">Software Engineer & Full Stack Developer</p>
+            <p class="contact-info">
+              <i class="bi bi-envelope-fill me-2"></i>binojohnson05@gmail.com<br>
+              <i class="bi bi-phone-fill me-2"></i>+971566230360
+            </p>
+          </div>
+        </div>
 
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Bino Johnson</strong> <span>All Rights Reserved</span></p>
+        <!-- Quick Links -->
+        <div class="col-lg-4 col-md-6 text-center">
+          <h5 class="footer-title mb-3">Quick Links</h5>
+          <div class="footer-links">
+            <a href="#hero" class="footer-link">Home</a>
+            <a href="#about" class="footer-link">About</a>
+            <a href="#resume" class="footer-link">Resume</a>
+            <a href="#services" class="footer-link">Services</a>
+            <a href="#portfolio" class="footer-link">Portfolio</a>
+            <a href="#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Social & Technologies -->
+        <div class="col-lg-4 col-md-12 text-center text-lg-end">
+          <h5 class="footer-title mb-3">Connect & Technologies</h5>
+          <div class="social-links d-flex justify-content-center justify-content-lg-end mb-3">
+            <a href="#" class="social-link" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-link" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" title="GitHub"><i class="bi bi-github"></i></a>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">PHP</span>
+            <span class="tech-badge">Laravel</span>
+            <span class="tech-badge">Vue.js</span>
+            <span class="tech-badge">MySQL</span>
+          </div>
+        </div>
       </div>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BJ</a>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="copyright mb-0">
+              © 2024 <strong>Bino Johnson</strong>. All Rights Reserved
+            </p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <p class="credits mb-0">
+              Designed with <i class="bi bi-heart-fill text-danger"></i> by <a href="#" class="designer-link">BJ</a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -1543,6 +1704,45 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Mobile Navigation Z-Index Fix -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileToggle = document.querySelector('.mobile-nav-toggle');
+      const navmenu = document.querySelector('.navmenu');
+      
+      if (mobileToggle && navmenu) {
+        mobileToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Toggle the mobile nav active class
+          navmenu.classList.toggle('mobile-nav-active');
+          
+          // Force z-index and styling
+          navmenu.style.zIndex = '99999';
+          navmenu.style.position = 'fixed';
+          navmenu.style.background = 'rgba(255, 255, 255, 0.98)';
+          navmenu.style.backdropFilter = 'blur(20px)';
+        });
+        
+        // Close menu when clicking nav links
+        const navLinks = navmenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            navmenu.classList.remove('mobile-nav-active');
+          });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!navmenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+            navmenu.classList.remove('mobile-nav-active');
+          }
+        });
+      }
+    });
+  </script>
 
   <!-- Simple Animation Script -->
   <script>
